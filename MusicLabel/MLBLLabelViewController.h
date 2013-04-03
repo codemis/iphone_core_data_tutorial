@@ -1,0 +1,3 @@
+@interface MLBLLabelViewController : UITableViewController
+
+@end
