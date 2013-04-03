@@ -1,6 +1,7 @@
 #import "MLBLArtistsViewController.h"
 #import "MLBLAppDelegate.h"
 #import "Artist.h"
+#import "MLBLAlbumsViewController.h"
 
 @interface MLBLArtistsViewController ()
 @property (strong, nonatomic) NSArray *artists;
@@ -10,7 +11,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:YES];
+    [super viewWillAppear:animated];
     [self loadArtists];
 }
 
@@ -27,6 +28,16 @@
                                                             forIndexPath:indexPath];
     cell.textLabel.text = ((Artist *)self.artists[indexPath.row]).name;
     return cell;
+}
+
+#pragma mark - Segue
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AlbumsSegue"])
+    {
+        NSInteger indexRow = self.tableView.indexPathForSelectedRow.row;
+        ((MLBLAlbumsViewController *)segue.destinationViewController).artistID = [self.artists[indexRow] objectID];
+    }
 }
 
 #pragma mark - Private methods

@@ -24,6 +24,8 @@
 		66A36166170BCC540058E0A8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A36165170BCC540058E0A8 /* Album.m */; };
 		66A36169170BCE980058E0A8 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A36168170BCE980058E0A8 /* Label.m */; };
 		66DFEAEC170BE0C1009BD8AA /* MLBLArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DFEAEB170BE0C1009BD8AA /* MLBLArtistsViewController.m */; };
+		66DFEAEF170BE7E5009BD8AA /* MLBLAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DFEAEE170BE7E5009BD8AA /* MLBLAlbumsViewController.m */; };
+		66DFEAF1170C9A70009BD8AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 66DFEAF0170C9A70009BD8AA /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,9 @@
 		66A36168170BCE980058E0A8 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
 		66DFEAEA170BE0C1009BD8AA /* MLBLArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBLArtistsViewController.h; sourceTree = "<group>"; };
 		66DFEAEB170BE0C1009BD8AA /* MLBLArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBLArtistsViewController.m; sourceTree = "<group>"; };
+		66DFEAED170BE7E5009BD8AA /* MLBLAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBLAlbumsViewController.h; sourceTree = "<group>"; };
+		66DFEAEE170BE7E5009BD8AA /* MLBLAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBLAlbumsViewController.m; sourceTree = "<group>"; };
+		66DFEAF0170C9A70009BD8AA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +82,8 @@
 				66321A78170BDB3B00EAB804 /* MLBLLabelsViewController.m */,
 				66DFEAEA170BE0C1009BD8AA /* MLBLArtistsViewController.h */,
 				66DFEAEB170BE0C1009BD8AA /* MLBLArtistsViewController.m */,
+				66DFEAED170BE7E5009BD8AA /* MLBLAlbumsViewController.h */,
+				66DFEAEE170BE7E5009BD8AA /* MLBLAlbumsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -84,6 +91,7 @@
 		66A3612F170BC5770058E0A8 = {
 			isa = PBXGroup;
 			children = (
+				66DFEAF0170C9A70009BD8AA /* README.md */,
 				66A36143170BC5770058E0A8 /* MusicLabel */,
 				66A3613A170BC5770058E0A8 /* Frameworks */,
 				66A36139170BC5770058E0A8 /* Products */,
@@ -207,6 +215,7 @@
 				66A36152170BC5770058E0A8 /* Default@2x.png in Resources */,
 				66A36154170BC5770058E0A8 /* Default-568h@2x.png in Resources */,
 				66321A75170BDA8300EAB804 /* MainStoryboard.storyboard in Resources */,
+				66DFEAF1170C9A70009BD8AA /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +234,7 @@
 				66A36169170BCE980058E0A8 /* Label.m in Sources */,
 				66321A79170BDB3B00EAB804 /* MLBLLabelsViewController.m in Sources */,
 				66DFEAEC170BE0C1009BD8AA /* MLBLArtistsViewController.m in Sources */,
+				66DFEAEF170BE7E5009BD8AA /* MLBLAlbumsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
