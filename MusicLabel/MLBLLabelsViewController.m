@@ -1,12 +1,12 @@
-#import "MLBLLabelViewController.h"
+#import "MLBLLabelsViewController.h"
 #import "Label.h"
 #import "MLBLAppDelegate.h"
 
-@interface MLBLLabelViewController ()
+@interface MLBLLabelsViewController ()
 @property (strong, nonatomic) NSArray *labelArray;
 @end
 
-@implementation MLBLLabelViewController
+@implementation MLBLLabelsViewController
 
 - (void) viewWillAppear:(BOOL)animated
 {

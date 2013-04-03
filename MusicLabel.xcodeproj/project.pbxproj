@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		66321A75170BDA8300EAB804 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66321A74170BDA8300EAB804 /* MainStoryboard.storyboard */; };
-		66321A79170BDB3B00EAB804 /* MLBLLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66321A78170BDB3B00EAB804 /* MLBLLabelViewController.m */; };
+		66321A79170BDB3B00EAB804 /* MLBLLabelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66321A78170BDB3B00EAB804 /* MLBLLabelsViewController.m */; };
 		66A3613C170BC5770058E0A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A3613B170BC5770058E0A8 /* UIKit.framework */; };
 		66A3613E170BC5770058E0A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A3613D170BC5770058E0A8 /* Foundation.framework */; };
 		66A36140170BC5770058E0A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A3613F170BC5770058E0A8 /* CoreGraphics.framework */; };
@@ -27,8 +27,8 @@
 
 /* Begin PBXFileReference section */
 		66321A74170BDA8300EAB804 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		66321A77170BDB3B00EAB804 /* MLBLLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBLLabelViewController.h; sourceTree = "<group>"; };
-		66321A78170BDB3B00EAB804 /* MLBLLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBLLabelViewController.m; sourceTree = "<group>"; };
+		66321A77170BDB3B00EAB804 /* MLBLLabelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBLLabelsViewController.h; sourceTree = "<group>"; };
+		66321A78170BDB3B00EAB804 /* MLBLLabelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBLLabelsViewController.m; sourceTree = "<group>"; };
 		66A36138170BC5770058E0A8 /* MusicLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A3613B170BC5770058E0A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		66A3613D170BC5770058E0A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -70,8 +70,8 @@
 		66321A76170BDB0200EAB804 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				66321A77170BDB3B00EAB804 /* MLBLLabelViewController.h */,
-				66321A78170BDB3B00EAB804 /* MLBLLabelViewController.m */,
+				66321A77170BDB3B00EAB804 /* MLBLLabelsViewController.h */,
+				66321A78170BDB3B00EAB804 /* MLBLLabelsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 				66A36163170BCC210058E0A8 /* Artist.m in Sources */,
 				66A36166170BCC540058E0A8 /* Album.m in Sources */,
 				66A36169170BCE980058E0A8 /* Label.m in Sources */,
-				66321A79170BDB3B00EAB804 /* MLBLLabelViewController.m in Sources */,
+				66321A79170BDB3B00EAB804 /* MLBLLabelsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
