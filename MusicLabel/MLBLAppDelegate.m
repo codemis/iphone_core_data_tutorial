@@ -1,15 +1,5 @@
-//
-//  MLBLAppDelegate.m
-//  MusicLabel
-//
-//  Created by Johnathan Pulos on 4/2/13.
-//  Copyright (c) 2013 Johnathan Pulos. All rights reserved.
-//
-
 #import "MLBLAppDelegate.h"
-
 @implementation MLBLAppDelegate
-
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
