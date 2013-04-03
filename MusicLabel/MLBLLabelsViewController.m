@@ -1,9 +1,10 @@
 #import "MLBLLabelsViewController.h"
+#import "MLBLArtistsViewController.h"
 #import "Label.h"
 #import "MLBLAppDelegate.h"
 
 @interface MLBLLabelsViewController ()
-@property (strong, nonatomic) NSArray *labelArray;
+@property (strong, nonatomic) NSArray *labels;
 @end
 
 @implementation MLBLLabelsViewController
@@ -11,22 +12,33 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self loadTableData];
+    [self loadLabels];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.labelArray.count;
+    return self.labels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LabelCell"
                                                             forIndexPath:indexPath];
-    cell.textLabel.text = ((Label *)self.labelArray[indexPath.row]).name;
+    cell.textLabel.text = ((Label *)self.labels[indexPath.row]).name;
     return cell;
+}
+
+#pragma mark - Segue
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ArtistsSegue"])
+    {
+        NSInteger indexRow = self.tableView.indexPathForSelectedRow.row;
+        ((MLBLArtistsViewController *)segue.destinationViewController).labelID =
+        [self.labels[indexRow] objectID];
+    }
 }
 
 #pragma mark - Private methods
@@ -35,7 +47,7 @@
 }
 
 // This method executes a fetch request and reloads the table view.
-- (void) loadTableData {
+- (void) loadLabels {
     NSManagedObjectContext *context = self.appDelegate.managedObjectContext;
     // Construct a fetch request
     NSFetchRequest *fetchRequest = NSFetchRequest.new;
@@ -48,7 +60,7 @@
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     fetchRequest.sortDescriptors = sortDescriptors;
     NSError *error = nil;
-    self.labelArray = [context executeFetchRequest:fetchRequest error:&error];
+    self.labels = [context executeFetchRequest:fetchRequest error:&error];
     [self.tableView reloadData];
 }
 @end

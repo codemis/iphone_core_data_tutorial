@@ -23,6 +23,7 @@
 		66A36163170BCC210058E0A8 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A36162170BCC210058E0A8 /* Artist.m */; };
 		66A36166170BCC540058E0A8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A36165170BCC540058E0A8 /* Album.m */; };
 		66A36169170BCE980058E0A8 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A36168170BCE980058E0A8 /* Label.m */; };
+		66DFEAEC170BE0C1009BD8AA /* MLBLArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DFEAEB170BE0C1009BD8AA /* MLBLArtistsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		66A36165170BCC540058E0A8 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
 		66A36167170BCE970058E0A8 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
 		66A36168170BCE980058E0A8 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		66DFEAEA170BE0C1009BD8AA /* MLBLArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBLArtistsViewController.h; sourceTree = "<group>"; };
+		66DFEAEB170BE0C1009BD8AA /* MLBLArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBLArtistsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 			children = (
 				66321A77170BDB3B00EAB804 /* MLBLLabelsViewController.h */,
 				66321A78170BDB3B00EAB804 /* MLBLLabelsViewController.m */,
+				66DFEAEA170BE0C1009BD8AA /* MLBLArtistsViewController.h */,
+				66DFEAEB170BE0C1009BD8AA /* MLBLArtistsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				66A36166170BCC540058E0A8 /* Album.m in Sources */,
 				66A36169170BCE980058E0A8 /* Label.m in Sources */,
 				66321A79170BDB3B00EAB804 /* MLBLLabelsViewController.m in Sources */,
+				66DFEAEC170BE0C1009BD8AA /* MLBLArtistsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
