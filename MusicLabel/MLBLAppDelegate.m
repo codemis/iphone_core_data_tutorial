@@ -1,4 +1,9 @@
 #import "MLBLAppDelegate.h"
+// import Models
+#import "Album.h"
+#import "Artist.h"
+#import "Label.h"
+
 @implementation MLBLAppDelegate
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -6,6 +11,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self read];
+    [self delete];
+    [self read];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -55,6 +63,193 @@
     }
 }
 
+#pragma mark - Object Creation
+
+- (void) create {
+    // Grab the context
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    // Grab the Label entity
+    Label *label = [NSEntityDescription insertNewObjectForEntityForName:@"Label"
+                                                 inManagedObjectContext:context];
+    
+    // Set label name
+    label.name = @"Diplomat Records";
+    
+    // Create a Date
+    NSDateFormatter *dateFormatter = NSDateFormatter.new;
+    dateFormatter.dateFormat = @"YYYY";
+    NSDate *dateFounded = [dateFormatter dateFromString:@"2003"];
+    
+    // Set the year founded for the label
+    label.founded = dateFounded;
+    
+    // Set the label genre
+    label.genre = @"Rap/Hip-hop";
+    
+    // Insert the Artist entity
+    Artist *artist = [NSEntityDescription insertNewObjectForEntityForName:@"Artist"
+                                                   inManagedObjectContext:context];
+    
+    // Set the artist attributes
+    artist.name = @"Cam'Ron";
+    artist.hometown = @"Harlem, NY";
+    
+    // Insert Album entity
+    Album *album = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                 inManagedObjectContext:context];
+    
+    // Set album attributes
+    album.title = @"Come Home With Me";
+    NSDate *releaseDate = [dateFormatter dateFromString:@"2002"];
+    album.released = releaseDate;
+    
+    // Set relationships
+    [label addArtistsObject:artist];
+    artist.label = label;
+    [artist addAlbumsObject:album];
+    album.artist = artist;
+    
+    // Save everything
+    NSError *error = nil;
+    if ([context save:&error]) {
+        NSLog(@"The save was successful!");
+    } else {
+        NSLog(@"The save wasn't successful: %@", [error userInfo]);
+    }
+}
+
+- (void) read {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    // Construct a fetch request
+    NSFetchRequest *fetchRequest = NSFetchRequest.new;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Label"
+                                              inManagedObjectContext:context];
+    fetchRequest.entity = entity;
+    NSError *error = nil;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest
+                                                     error:&error];
+    for (Label *label in fetchedObjects) {
+        // Log the label details
+        NSDateFormatter *dateFormatter = NSDateFormatter.new;
+        dateFormatter.dateFormat = @"YYYY";
+        NSLog(@"%@, est. %@ (%@)",  label.name,
+                                    [dateFormatter stringFromDate:label.founded],
+                                    label.genre);
+        NSLog(@"\tArtists:");
+        for (Artist *artist in label.artists) {
+            // Log the artist details
+            NSLog(@"\t\t%@ (%@)", artist.name, artist.hometown);
+            NSLog(@"\t\t\tAlbums:");
+            for (Album *album in artist.albums) {
+                // Log the album details
+                NSLog(@"\t\t\t\t%@ (%@)", album.title,
+                [dateFormatter stringFromDate:album.released]);
+            }
+        }
+    }
+}
+
+- (void) update {
+    // Grab the context
+    NSManagedObjectContext *context = [self managedObjectContext];
+    // Perform fetch request
+    NSFetchRequest *fetchRequest = NSFetchRequest.new;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Label"
+                                              inManagedObjectContext:context];
+    fetchRequest.entity = entity;
+    NSError *error = nil;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    // Date formatter comes in handy
+    NSDateFormatter *dateFormatter = NSDateFormatter.new;
+    dateFormatter.dateFormat = @"YYYY";
+    // Grab the label
+    Label *label = [fetchedObjects objectAtIndex:0];
+    // Juelz Santana
+    Artist *juelz = [NSEntityDescription insertNewObjectForEntityForName:@"Artist"
+                                                  inManagedObjectContext:context];
+    juelz.name = @"Juelz Santana";
+    juelz.hometown = @"Harlem, NY";
+    // Juelz Santana albums
+    Album *juelzAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                      inManagedObjectContext: context];
+    juelzAlbum.title = @"From Me to U";
+    juelzAlbum.released = [dateFormatter dateFromString:@"2003"];
+    juelzAlbum.artist = juelz;
+    Album *juelzAlbum2 = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                       inManagedObjectContext:context];
+    juelzAlbum2.title = @"What The Game’s Been Missing!";
+    juelzAlbum2.released = [dateFormatter dateFromString:@"2005"];
+    juelzAlbum2.artist = juelz;
+    // Set relationships
+    [juelz addAlbums:[NSSet setWithObjects:juelzAlbum, juelzAlbum2, nil]];
+    // Jim Jones
+    Artist *jimmy = [NSEntityDescription insertNewObjectForEntityForName:@"Artist"
+                                                  inManagedObjectContext:context];
+    jimmy.name = @"Jim Jones";
+    jimmy.hometown = @"Harlem, NY";
+    // Jim Jones albums
+    Album *jimmyAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                      inManagedObjectContext:context];
+    jimmyAlbum.title = @"On My Way to Church";
+    jimmyAlbum.released = [dateFormatter dateFromString:@"2004"];
+    jimmyAlbum.artist = jimmy;
+    Album *jimmyAlbum2 = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                       inManagedObjectContext:context];
+    jimmyAlbum2.title = @"Harlem: Diary of a Summer";
+    jimmyAlbum2.released = [dateFormatter dateFromString:@"2005"];
+    jimmyAlbum2.artist = jimmy;
+    Album *jimmyAlbum3 = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                       inManagedObjectContext:context];
+    jimmyAlbum3.title = @"Hustler’s P.O.M.E. (Product of My Environment)";
+    jimmyAlbum3.released = [dateFormatter dateFromString:@"2006"];
+    jimmyAlbum3.artist = jimmy;
+    // Set relationships
+    [jimmy addAlbums:[NSSet setWithObjects:jimmyAlbum, jimmyAlbum2, jimmyAlbum3, nil]];
+    // Freekey Zekey
+    Artist *freekey = [NSEntityDescription insertNewObjectForEntityForName:@"Artist"
+                                                    inManagedObjectContext:context];
+    freekey.name = @"Freekey Zekey";
+    freekey.hometown = @"Harlem, NY";
+    Album *freekeyAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"Album"
+                                                        inManagedObjectContext:context];
+    freekeyAlbum.title = @"Book of Ezekiel";
+    freekeyAlbum.released = [dateFormatter dateFromString:@"2007"];
+    freekeyAlbum.artist = freekey;
+    [freekey addAlbumsObject:freekeyAlbum];
+    // Set relationships
+    [label addArtists:[NSSet setWithObjects:juelz, jimmy, freekey, nil]];
+    // Save everything
+    if ([context save:&error]) {
+        NSLog(@"The save was successful!");
+    } else {
+        NSLog(@"The save wasn’t successful: %@", [error localizedDescription]);
+    }
+}
+
+- (void) delete {
+    // Grab the context
+    NSManagedObjectContext *context = [self managedObjectContext];
+    // We’re looking to grab an artist
+    NSFetchRequest *fetchRequest = NSFetchRequest.new;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Artist"
+                                              inManagedObjectContext:context];
+    fetchRequest.entity = entity;
+    // We specify that we only want Freekey Zekey
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", @"Freekey Zekey"];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    // Grab the artist and delete
+    Artist *freekey = [fetchedObjects objectAtIndex:0];
+    [freekey.label removeArtistsObject:freekey];
+    // Save everything
+    if ([context save:&error]) {
+        NSLog(@"The save was successful!");
+    } else {
+        NSLog(@"The save wasn’t successful: %@", [error localizedDescription]);
+    }
+}
 #pragma mark - Core Data stack
 
 // Returns the managed object context for the application.

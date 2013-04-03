@@ -14,10 +14,11 @@
     <entity name="Label" representedClassName="Label" syncable="YES">
         <attribute name="founded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="artists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Artist" inverseName="label" inverseEntity="Artist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Label" positionX="-344" positionY="-225" width="128" height="90"/>
+        <element name="Label" positionX="-344" positionY="-225" width="128" height="105"/>
         <element name="Artist" positionX="25" positionY="-63" width="128" height="105"/>
         <element name="Album" positionX="207" positionY="72" width="128" height="90"/>
     </elements>
